@@ -9,9 +9,9 @@ acting on it.
 
 **Status:** todo
 
-- [ ] My reports shows the signed-in Reporter's reports, newest first,
+- [x] My reports shows the signed-in Reporter's reports, newest first,
       with the Status of each
-- [ ] A second Reporter cannot see the first Reporter's reports, even by
+- [x] A second Reporter cannot see the first Reporter's reports, even by
       trying
-- [ ] An empty list shows a friendly message
+- [x] An empty list shows a friendly message
 - [ ] Works on the live URL, from a phone
