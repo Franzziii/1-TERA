@@ -42,26 +42,44 @@ export const dynamic = "force-dynamic";
 // only works if the Supabase keys and the `profiles` table are right.
 async function DatabaseStatus() {
   let connected = false;
+  // TEMPORARY: why the check failed. Yes/no facts and the database's own
+  // error text only — never a key or the project URL. Remove once fixed.
+  let reason = "";
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
   try {
     const supabase = await createClient();
     const { error } = await supabase
       .from("profiles")
       .select("id", { count: "exact", head: true });
     connected = !error;
-  } catch {
-    connected = false;
+    if (error) reason = `database said: ${error.message}`;
+  } catch (e) {
+    reason = `app error: ${e instanceof Error ? e.message.slice(0, 80) : "unknown"}`;
   }
 
   return (
-    <p
-      className={
-        connected
-          ? "text-sm font-medium text-green-600"
-          : "text-sm font-medium text-red-600"
-      }
-    >
-      {connected ? "Database connected" : "Database not connected"}
-    </p>
+    <div className="flex flex-col gap-1">
+      <p
+        className={
+          connected
+            ? "text-sm font-medium text-green-600"
+            : "text-sm font-medium text-red-600"
+        }
+      >
+        {connected ? "Database connected" : "Database not connected"}
+      </p>
+      {!connected && (
+        <p className="text-xs text-muted-foreground">
+          {reason} · url set: {String(url.length > 0)} · url starts https:
+          {" "}{String(url.startsWith("https://"))} · url ends supabase.co:
+          {" "}{String(url.trim().endsWith(".supabase.co"))} · key set:
+          {" "}{String(key.length > 0)} · key starts sb_publishable_:
+          {" "}{String(key.startsWith("sb_publishable_"))} · key has spaces:
+          {" "}{String(key !== key.trim())}
+        </p>
+      )}
+    </div>
   );
 }
 
