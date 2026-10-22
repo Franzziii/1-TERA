@@ -11,16 +11,16 @@ add an optional note, and the Reporter's screen shows the new Status.
 
 **Status:** todo
 
-- [ ] The Operator sees all reports, newest first, with unhandled ones
+- [x] The Operator sees all reports, newest first, with unhandled ones
       highlighted
-- [ ] A new report appears on the Operator's screen without refreshing
-- [ ] Each report shows the details listed above, and the maps link opens
+- [x] A new report appears on the Operator's screen without refreshing
+- [x] Each report shows the details listed above, and the maps link opens
       the location (or shows the landmark if there is no GPS)
-- [ ] Buttons mark a report verified, dispatched or resolved, and the
+- [x] Buttons mark a report verified, dispatched or resolved, and the
       matching time (`verified_at`, `dispatched_at`, `resolved_at`) is
       recorded
-- [ ] An optional operator note can be saved with a report
-- [ ] The Reporter's My reports screen shows the new Status
-- [ ] A Reporter cannot change any report's Status
+- [x] An optional operator note can be saved with a report
+- [x] The Reporter's My reports screen shows the new Status
+- [x] A Reporter cannot change any report's Status
 - [ ] Works on the live URL, with the Operator on a computer and a
       Reporter on a phone
