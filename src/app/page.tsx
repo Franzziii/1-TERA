@@ -33,6 +33,10 @@ const steps = [
   },
 ];
 
+// Always run this page on the server for each visit. Without this, Next.js
+// can save a copy made at build time and show a stale database status.
+export const dynamic = "force-dynamic";
+
 // Asks the database one harmless question. Row Level Security means a
 // visitor who is not signed in sees zero rows, but the question itself
 // only works if the Supabase keys and the `profiles` table are right.
