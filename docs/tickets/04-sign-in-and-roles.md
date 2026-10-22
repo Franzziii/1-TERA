@@ -9,12 +9,12 @@ page is turned away. Every signed-in screen has a Sign out button.
 
 **Status:** todo
 
-- [ ] Sign in works with the right email and password, and shows a clear
+- [x] Sign in works with the right email and password, and shows a clear
       message for wrong ones
-- [ ] A Reporter lands on the report form after signing in
+- [x] A Reporter lands on the report form after signing in
 - [ ] One Operator account exists, made by hand in the Supabase
       dashboard, and it lands on the Operator page
-- [ ] A Reporter who opens the Operator page is turned away
-- [ ] Someone who is not signed in is sent to Sign in
-- [ ] Sign out works from the header
+- [x] A Reporter who opens the Operator page is turned away
+- [x] Someone who is not signed in is sent to Sign in
+- [x] Sign out works from the header
 - [ ] Works on the live URL
