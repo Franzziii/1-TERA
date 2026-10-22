@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/server";
 
 // This is the starter screen. Once Ticket 01 is done and you can see this
 // page on your phone, delete everything here and build your own app.
@@ -31,6 +32,34 @@ const steps = [
     body: "/code-review. Fix every red item. An unprotected database on a public URL is a real data leak.",
   },
 ];
+
+// Asks the database one harmless question. Row Level Security means a
+// visitor who is not signed in sees zero rows, but the question itself
+// only works if the Supabase keys and the `profiles` table are right.
+async function DatabaseStatus() {
+  let connected = false;
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase
+      .from("profiles")
+      .select("id", { count: "exact", head: true });
+    connected = !error;
+  } catch {
+    connected = false;
+  }
+
+  return (
+    <p
+      className={
+        connected
+          ? "text-sm font-medium text-green-600"
+          : "text-sm font-medium text-red-600"
+      }
+    >
+      {connected ? "Database connected" : "Database not connected"}
+    </p>
+  );
+}
 
 export default function Home() {
   return (
@@ -67,6 +96,8 @@ export default function Home() {
           ))}
         </CardContent>
       </Card>
+
+      <DatabaseStatus />
 
       <div className="flex flex-wrap items-center gap-3">
         <Button>Replace this page with your app</Button>
