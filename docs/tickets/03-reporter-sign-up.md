@@ -9,13 +9,13 @@ profile exists with role Reporter and the time they gave consent.
 
 **Status:** todo
 
-- [ ] Welcome screen has Sign up and Sign in buttons
-- [ ] Sign up asks for full name, email, password, phone, and a required
+- [x] Welcome screen has Sign up and Sign in buttons
+- [x] Sign up asks for full name, email, password, phone, and a required
       consent checkbox
-- [ ] After signing up, the person sees "Check your email to confirm your
+- [x] After signing up, the person sees "Check your email to confirm your
       account"
-- [ ] A confirmed account has a profile with role `reporter` and a
+- [x] A confirmed account has a profile with role `reporter` and a
       `consent_at` time
-- [ ] The role cannot be set to anything other than `reporter` through
+- [x] The role cannot be set to anything other than `reporter` through
       the app
 - [ ] Works on the live URL, from a phone
