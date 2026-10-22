@@ -7,13 +7,13 @@ right people can read or write rows.
 
 **Blocked by:** 01
 
-**Status:** todo
+**Status:** done
 
-- [ ] The Supabase URL and publishable key are set locally and in Vercel,
+- [x] The Supabase URL and publishable key are set locally and in Vercel,
       and no secret key appears anywhere in the project
-- [ ] The `profiles` table exists, with RLS on and policies matching the
+- [x] The `profiles` table exists, with RLS on and policies matching the
       spec (people read their own row, Operators read all, a person may
       create only their own row with role `reporter`)
-- [ ] The database change is saved as a numbered SQL file in the repo
-- [ ] The site shows "Database connected" after a safe read
-- [ ] Works on the live URL
+- [x] The database change is saved as a numbered SQL file in the repo
+- [x] The site shows "Database connected" after a safe read
+- [x] Works on the live URL

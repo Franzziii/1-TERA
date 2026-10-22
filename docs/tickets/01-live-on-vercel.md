@@ -6,10 +6,10 @@ the README so everyone can find it.
 
 **Blocked by:** None
 
-**Status:** todo
+**Status:** done
 
 - [x] The app builds with no errors
 - [x] A Vercel project is connected to the repository, so every push to
       `main` deploys
 - [x] The live URL is at the top of the README
-- [ ] Works on the live URL: opened on a phone, the page loads
+- [x] Works on the live URL: opened on a phone, the page loads
