@@ -54,9 +54,13 @@ feeds the Operator's list. Nobody else has an account in this MVP.
 6. **Live list** (Operator): all reports, newest first, updating by
    itself, with unhandled ones highlighted. Each card shows the type,
    description, landmark, Reporter name and phone, the time, and an
-   "Open location in maps" link (a plain link, no map service). It has
-   buttons to mark a report verified, dispatched or resolved, and a
-   box for an optional note.
+   "Open location in maps" link. It has buttons to mark a report
+   verified, dispatched or resolved, and a box for an optional note.
+   Above the list is **one live map** with a pin for every active report
+   that has GPS (red = received, blue = verified, purple = dispatched).
+   Pins appear and change colour by themselves. The map uses the free
+   Leaflet library and OpenStreetMap pictures: added after the first
+   spec with the team's approval.
 
 A **Sign out** button appears in the header of every signed-in screen.
 

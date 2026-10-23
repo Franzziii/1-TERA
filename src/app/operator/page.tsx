@@ -3,6 +3,7 @@ import { RealtimeRefresh } from "@/components/realtime-refresh";
 import { requireOperator } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { ReportCard, type ReportWithReporter } from "./report-card";
+import { ReportsMap } from "./reports-map";
 
 export const metadata = { title: "Live list — 1TERA" };
 export const dynamic = "force-dynamic";
@@ -28,6 +29,9 @@ export default async function OperatorPage({
   const active = reports.filter((report) => report.status !== "resolved");
   const resolved = reports.filter((report) => report.status === "resolved");
   const unhandled = active.filter((report) => report.status === "received");
+  const withoutGps = active.filter(
+    (report) => report.latitude === null || report.longitude === null,
+  ).length;
 
   return (
     <>
@@ -51,6 +55,28 @@ export default async function OperatorPage({
               : "That change did not save. Please try again."}
           </p>
         )}
+
+        <section className="flex flex-col gap-2">
+          <ReportsMap
+            reports={active.map((report) => ({
+              id: report.id,
+              emergency_type: report.emergency_type,
+              description: report.description,
+              status: report.status,
+              latitude: report.latitude,
+              longitude: report.longitude,
+              landmark: report.landmark,
+            }))}
+          />
+          <p className="text-xs text-muted-foreground">
+            <span className="font-medium text-red-600">Red</span> = new,{" "}
+            <span className="font-medium text-blue-600">blue</span> = verified,{" "}
+            <span className="font-medium text-purple-600">purple</span> =
+            dispatched.
+            {withoutGps > 0 &&
+              ` ${withoutGps} active ${withoutGps === 1 ? "report has" : "reports have"} no GPS and ${withoutGps === 1 ? "is" : "are"} not on the map.`}
+          </p>
+        </section>
 
         {!error && active.length === 0 && (
           <p className="text-sm text-muted-foreground">
